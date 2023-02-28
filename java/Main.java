@@ -4,6 +4,10 @@ import java.util.HashSet;
 public class Main {
     public static void main(String[] args) {
         System.out.println("hi globe");
+        
+        String s = "asdf";
+        String t = "asgd";
+        validAnagram(s, t);
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -34,6 +38,25 @@ public class Main {
     }
 
     public static boolean validAnagram(String s, String t) {
-        return false;
+        HashMap<Character, Integer> sfreqs = new HashMap<Character, Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            char cur_char = s.charAt(i);
+            if (sfreqs.containsKey(cur_char)) {
+                sfreqs.put(cur_char, sfreqs.get(cur_char) + 1);
+            } else {
+                sfreqs.put(cur_char, 1);
+            }
+        }
+
+        HashMap<Character, Integer> tfreqs = new HashMap<Character, Integer>();
+        for (int i = 0; i < t.length(); i++) {
+            char cur_char = t.charAt(i);
+            if (tfreqs.containsKey(cur_char)) {
+                tfreqs.put(cur_char, tfreqs.get(cur_char) + 1);
+            } else {
+                tfreqs.put(cur_char, 1);
+            }
+        }
+        return tfreqs.equals(sfreqs);
     }
 }
