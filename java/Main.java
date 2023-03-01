@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -58,5 +59,23 @@ public class Main {
             }
         }
         return tfreqs.equals(sfreqs);
+    }
+
+    public static int search(int[] nums, int target) { //binary search
+        int l = 0;
+        int r = nums.length - 1;
+        int cur[] = nums;
+        int mid;
+        while (l <= r) {
+            mid = (l + r) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }   
+        return -1;
     }
 }
