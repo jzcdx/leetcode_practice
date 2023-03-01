@@ -4,11 +4,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hi globe");
-        
-        String s = "asdf";
-        String t = "asgd";
-        validAnagram(s, t);
+
+        isPalindrome("123asdfb: asd#f d");
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -77,5 +74,31 @@ public class Main {
             }
         }   
         return -1;
+    }
+
+    public static boolean isPalindrome(String s) {
+        if (s.length() == 0 | s.length() == 1) {
+            return true;
+        }
+        s = s.replaceAll("[^A-Za-z0-9]", ""); //gets rid of all the non alphanumeric stuff. (spaces, extra symbols, etc)
+
+        int l, r;
+        if (s.length() % 2 == 1) {
+            int mid = (s.length() - 1) / 2;
+            l = mid - 1;
+            r = mid + 1;
+        } else {
+            l = (s.length() / 2) - 1;
+            r = s.length() / 2;
+        }
+
+        while (l >= 0 && r <= s.length() - 1) {
+            if (Character.toLowerCase(s.charAt(l)) != Character.toLowerCase(s.charAt(r))) {
+                return false;
+            }
+            l--;
+            r++;
+        }
+        return true;
     }
 }
